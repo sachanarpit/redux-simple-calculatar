@@ -1,17 +1,19 @@
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { decNum, incNum } from "../redux/actions";
 
 export const Calculator = () => {
   const stateNow = useSelector((state) => state.calNum);
-  console.log("stateNow:", stateNow);
+  const disp = useDispatch();
   return (
     <div>
-      <h1>Simple Calculatar</h1>
+      <h1>Simple Calculatar using Redux</h1>
       <div>
-        <button>
+        <button onClick={() => disp(decNum(1))}>
           <span>-</span>
         </button>
-        <input type="text" name="" id="" value="0" />
-        <button>
+        <input type="text" name="" id="" value={stateNow} readOnly />
+        <button onClick={() => disp(incNum(1))}>
           <span>+</span>
         </button>
       </div>
